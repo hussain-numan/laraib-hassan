@@ -98,10 +98,12 @@
   }
 
   /* ---------- active nav link ---------- */
-  var path = (location.pathname.split('/').pop() || 'index.html');
-  document.querySelectorAll('.nav-links a, .mobile-panel a').forEach(function (a) {
-    var href = a.getAttribute('href');
-    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  var rawPath = location.pathname.split('/').pop() || 'index.html';
+  var normPath = rawPath.replace(/\.html$/, '') || 'index';
+  document.querySelectorAll('.nav-links a, .mobile-panel a:not(.btn)').forEach(function (a) {
+    var rawHref = (a.getAttribute('href') || '').split('#')[0];
+    var normHref = rawHref.replace(/\.html$/, '') || 'index';
+    if (normHref === normPath) a.classList.add('active');
   });
 
   /* ---------- testimonial carousel (continuous loop + arrow tween, pauses on hover) ---------- */
