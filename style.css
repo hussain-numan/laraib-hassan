@@ -77,6 +77,15 @@ html[data-theme="light"]{
 
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
+
+/* ---------- custom scrollbar ---------- */
+html{ scrollbar-width:thin; scrollbar-color:var(--accent-3) var(--bg-alt); }
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:var(--bg-alt); }
+::-webkit-scrollbar-thumb{ background:var(--accent-3); border-radius:8px; transition:background .2s ease; }
+::-webkit-scrollbar-thumb:hover{ background:var(--accent-3); }
+::-webkit-scrollbar-button{ display:none !important; width:0 !important; height:0 !important; }
+::-webkit-scrollbar-corner{ background:var(--bg-alt); }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
